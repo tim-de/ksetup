@@ -59,9 +59,9 @@ func main() {
 			"; Kohan: Ahriman's Gift",
 			"[_ag]",
 			"windowed=false",
-			"fullscreen = true",
-			"maintainas=true",
-		}, "\n")
+			"fullscreen=true",
+			"maintas=true",
+		}, "\r\n")
 		filehandle, err := os.OpenFile("ddraw.ini", os.O_APPEND | os.O_WRONLY, 0644)
 		if err != nil {
 			throbber.Delay()
