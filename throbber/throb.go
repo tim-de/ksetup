@@ -28,6 +28,9 @@ func Start() {
 			if throb.wait_til.After(time.Now()) {
 				time.Sleep(throb.wait_til.Sub(time.Now()))
 			}
+			if !throb.run {
+				return
+			}
 			char := uint8(0xff & (chars >> (throb.step * 8)))
 			fmt.Fprintf(os.Stderr, "%c\r", char)
 			throb.step = (throb.step + 1) & 3
