@@ -23,10 +23,14 @@ func apply_fix(fix Fix, waitgroup *sync.WaitGroup) {
 	waitgroup.Add(1)
 	go func(fix Fix) {
 		defer waitgroup.Done()
+		skip := true
 		for _, check_target := range fix.check {
 			if !fileExists(check_target) {
+				skip = false
 				break
 			}
+		}
+		if skip {
 			throbber.Delay()
 			log.Printf("%s - Files already present, skipping\n", fix.description)
 			return
